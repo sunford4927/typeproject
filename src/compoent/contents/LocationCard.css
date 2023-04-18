@@ -1,0 +1,44 @@
+.LocationCard {
+    width : 300px;
+    height: 130px;
+    /* background-color:#9499a5; */
+    border-radius : 11px;
+    padding : 20px;
+    color : #FFF;
+    margin : 5px auto;
+}
+
+.top_box {
+    display : flex;
+}
+
+.top_box .main {
+    margin-right : 7px;
+}
+
+.top_box .sub {
+    margin-top : 5px;
+}
+
+.top_box .check {
+    margin-left : auto;
+    margin-right : 10px;
+    cursor : pointer;
+}
+
+.body_box {
+    text-align: center;
+    margin-top : 10px;
+}
+
+.body_box .state_value {
+    display : inline-block;
+    /* width : 90px; */
+    height: 50px;
+    background-color: #FFF;
+    color : #5882FA;
+    font-size : 37px;
+    font-weight: bold;
+    margin :auto;
+    border-radius: 10px;
+}
