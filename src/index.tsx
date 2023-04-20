@@ -6,7 +6,8 @@ import { Provider } from 'react-redux';
 import rootReducer from "./modules";
 import { createStore }from 'redux'
 
-const store = createStore(rootReducer);
+const devTools = (window as any).__REDUX_DEVTOOLS_EXTENSION__;
+const store = createStore(rootReducer, devTools && devTools());
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

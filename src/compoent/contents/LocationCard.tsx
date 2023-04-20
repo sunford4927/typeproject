@@ -1,24 +1,41 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import "./LocationCard.css"
 import StarIcon from '@mui/icons-material/Star';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
+import { useSelector, useDispatch } from "react-redux";
+import { infoFavorites } from '../../modules/store';
 
 export interface Weather {
-    dataTime : string;
-    sidoName : string;
-    pm10Grade : string;
-    stationName : string;
-    pm10Value : string;
+    [key : string] : string;
+    // dataTime : string;
+    // sidoName : string;
+    // pm10Grade : string;
+    // stationName : string;
+    // pm10Value : string;
 }
 
 function LocationCard({item} : {item :  Weather}) : JSX.Element {
     const [isClick, setIsClick] = useState(false)
+
+    const dispatch = useDispatch()
+    const onhandleADD=(data)=>dispatch( infoFavorites(data))
+
+    const favoritesCheck = (e:React.ChangeEvent<HTMLElement>) =>{
+        e.preventDefault();
+        setIsClick(!isClick)
+
+    }
+
+    useEffect(()=>{
+        onhandleADD(item)
+
+    }, [isClick])
     return (
         <div className='LocationCard' style={item.pm10Grade === '1'? {backgroundColor: '#2E2EFE'} : item.pm10Grade === '2' ? {backgroundColor: '#81F781'} : item.pm10Grade === '3' ? {backgroundColor: '#FFFF00'} : item.pm10Grade === '4' ? {backgroundColor: '#FF8000'} : {backgroundColor: '#DF0101'} }>
             <div className="top_box">
                 <p className='text main' style={{fontSize : '18px'}}>{item.stationName}</p>
                 <p className='text sub' style={{fontSize : '14px'}}>{item.sidoName}</p>
-                <p className='check' onClick={() =>setIsClick(!isClick)}>{isClick ? <StarIcon/>:<StarBorderIcon/>}</p>
+                <p className='check' onClick={(e) =>favoritesCheck}>{isClick ? <StarIcon/>:<StarBorderIcon/>}</p>
             </div>
             <div className="body_box">
                 <div className="state_value">{item.pm10Grade === '1'? '좋음' : item.pm10Grade === '2' ? '보통' : item.pm10Grade === '3' ? '한때나쁨' : item.pm10Grade === '4' ? '나쁨' : item.pm10Grade === '5' ? '매우나쁨' : '알수없음' }</div>
