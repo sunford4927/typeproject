@@ -19,12 +19,16 @@ header {
     display : flex;
     flex-direction : row;
     flex-wrap : wrap-reverse;
+    /* z-index: 1; */
 }
 
 footer {
-    position : absolute;
-    width : 100%;
-    bottom : 0
+    /* position : fixed; */
+    position: relative; 
+    transform: translatY(-100%);
+    /* width : 100%; */
+    bottom : 0;
+    /* z-index: 1; */
 }
 
 p {
@@ -59,13 +63,15 @@ p {
 }
 
 .dropdown select {
-    width: 100px;
+    display : inline-block;
+    /* width: 100px; */
     height : 50px;
     font-size : 40px;
     text-align: center;
     border : none;
 
 }
+
 /* .footer_container .footer_box .material-symbols-outlined:nth-child(3) {
   font-variation-settings:
   'FILL' 1,

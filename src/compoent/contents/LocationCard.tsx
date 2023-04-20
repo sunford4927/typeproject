@@ -4,11 +4,11 @@ import StarIcon from '@mui/icons-material/Star';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 
 export interface Weather {
-    dataTime : string|null;
-    sidoName : string|null;
-    pm10Grade : string|null;
-    stationName : string|null;
-    pm10Value : string|null;
+    dataTime : string;
+    sidoName : string;
+    pm10Grade : string;
+    stationName : string;
+    pm10Value : string;
 }
 
 function LocationCard({item} : {item :  Weather}) : JSX.Element {
